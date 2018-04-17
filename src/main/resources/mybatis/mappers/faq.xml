@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="faq">
+	<select id="selectAll"
+			resultType="FaqVO">
+		<![CDATA[
+			  SELECT no, title, content
+			    FROM `faqboard`
+			ORDER BY no DESC;
+		]]>
+	</select>
+	
+	<select id="selectByNo"
+			parameterType="Integer"
+			resultType="FaqVO">
+		<![CDATA[
+			SELECT no, title, content
+			  FROM `faqboard`
+			 WHERE no=#{no}
+		]]>
+	</select>
+	
+	<update id="update"
+			parameterType="FaqVO">
+		<![CDATA[
+			UPDATE `faqboard`
+			   SET title=#{title}, content=#{content}
+			 WHERE no=#{no}
+		]]>
+	</update>
+	
+	<insert id="insert"
+			parameterType="FaqVO">
+		<![CDATA[
+			INSERT INTO `faqboard`
+			     VALUES(null, #{title}, #{content})
+		]]>
+	</insert>
+	
+	<delete id="delete"
+			parameterType="Integer">
+		<![CDATA[
+			DELETE FROM `faqboard`
+			      WHERE no=#{no}
+		]]>	
+	</delete>
+</mapper>

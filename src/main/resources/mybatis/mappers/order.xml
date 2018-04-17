@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="order">
+	
+	<select id="selectProductWithSuboption"
+			parameterType="map"
+			resultType="map">
+		<![CDATA[
+ 			SELECT *
+ 			  FROM `v_order_product`
+ 			 WHERE productCode=#{productCode}
+ 			   AND suboptionNo=#{suboptionNo}
+ 		]]>
+	</select>
+	
+	<select id="selectInquireOrder"
+			parameterType="String"
+			resultType="map">
+		<![CDATA[
+			SELECT *
+			  FROM `v_inquire_order`
+			 WHERE userId=#{userId}
+		]]>		
+	</select>
+	
+	<select id="selectAllOrders"
+			resultType="map">
+		<![CDATA[
+			SELECT *
+			  FROM `v_admin_order_list`
+		]]>		
+	</select>
+	
+	<select id="selectOrderByMember"
+			parameterType="map"
+			resultType="OrderVO">
+		<![CDATA[
+			SELECT no,
+				   o_name AS orderName,
+				   o_tel AS orderTel,
+				   o_phone AS orderPhone,
+				   o_email AS orderEmail,
+				   o_zipcode AS orderZipcode,
+				   o_address AS orderAddress,
+				   r_name AS rcvName,
+				   r_tel AS rcvTel,
+				   r_phone AS rcvPhone,
+				   r_email AS rcvEmail,
+				   r_zipcode AS rcvZipcode,
+				   r_address AS rcvAddress,
+				   `require`,
+				   tot_price AS totPrice,
+				   pay_type AS payType,
+				   reg_date AS regDate
+			  FROM `order`
+			 WHERE u_id=#{memberId}
+			   AND no=#{orderNo}
+		]]>
+	</select>
+	
+	<select id="selectOrderByNo"
+			parameterType="Integer"
+			resultType="OrderVO">
+		<![CDATA[
+			SELECT no,
+				   o_name AS orderName,
+				   o_tel AS orderTel,
+				   o_phone AS orderPhone,
+				   o_email AS orderEmail,
+				   o_zipcode AS orderZipcode,
+				   o_address AS orderAddress,
+				   r_name AS rcvName,
+				   r_tel AS rcvTel,
+				   r_phone AS rcvPhone,
+				   r_email AS rcvEmail,
+				   r_zipcode AS rcvZipcode,
+				   r_address AS rcvAddress,
+				   `require`,
+				   tot_price AS totPrice,
+				   pay_type AS payType,
+				   reg_date AS regDate
+			  FROM `order`
+			 WHERE no=#{orderNo}
+		]]>
+	</select>
+
+	<select id="selectAllOrderProductByMember"
+			parameterType="map"
+			resultType="map">
+		<![CDATA[
+			SELECT *
+			  FROM v_info_order
+			 WHERE userId=#{memberId}
+			   AND orderNo=#{orderNo}
+		]]>
+	</select>
+	
+	<select id="selectAllOrderProduct"
+			parameterType="Integer"
+			resultType="map">
+		<![CDATA[
+			SELECT *, IFNULL(discount, 0) AS discount2
+			  FROM v_info_order
+			 WHERE orderNo=#{orderNo}
+		]]>
+	</select>
+	
+	<select id="selectCountOfOrderProduct"
+			parameterType="OrderProductVO"
+			resultType="Integer">
+		<![CDATA[
+			SELECT COUNT(*)
+			  FROM `orderproduct`
+			 WHERE o_no=#{orderNo}
+			   AND p_code=#{productCode}
+		]]>
+	</select>
+	
+	<select id="selectCard"
+			parameterType="Integer"
+			resultType="CardVO">
+		<![CDATA[
+			SELECT o_no AS orderNo,
+				   no, bank AS cardBank,
+				   due_date AS dueDate,
+				   password, installment
+			  FROM card
+			 WHERE o_no = #{orderNo}
+		]]>
+	</select>
+	
+	<select id="selectAccount"
+			parameterType="Integer"
+			resultType="AccountVO">
+		<![CDATA[
+			SELECT o_no AS orderNo,
+				   bank AS accountBank,
+				   name
+			  FROM account
+			 WHERE o_no = #{orderNo}
+		]]>
+	</select>
+	
+	<insert id="insertOrder"
+			parameterType="OrderVO">
+		<![CDATA[
+			INSERT INTO `order`
+			     VALUES(null, #{orderName}, #{orderTel}, #{orderPhone},
+			     		#{orderEmail}, #{orderZipcode}, #{orderAddress},
+			     		#{rcvName}, #{rcvTel}, #{rcvPhone}, #{rcvEmail},
+			     		#{rcvZipcode}, #{rcvAddress}, #{require}, #{payType},
+			     		#{state}, ${totPrice}, DATE_FORMAT(NOW(), '%Y-%m-%d'), #{userId} )
+		]]>
+		<selectKey order="AFTER" resultType="Integer" keyProperty="no">
+			<![CDATA[
+				SELECT LAST_INSERT_ID();
+			]]>
+		</selectKey>
+	</insert>
+	
+	<insert id="insertOrderProduct"
+			parameterType="OrderProductVO">
+		<![CDATA[
+			INSERT INTO `orderproduct`
+			     VALUES(#{orderNo}, #{productCode});
+		]]>
+	</insert>
+	
+	<insert id="insertOrderProductWithSuboption"
+			parameterType="OrderProductVO">
+		<![CDATA[
+			INSERT INTO `orderproduct_suboption`
+				 VALUES(#{orderNo}, #{productCode}, #{suboptionNo}, #{amount})
+		]]>
+	</insert>
+	
+	<insert id="insertCard"
+			parameterType="CardVO">
+		<![CDATA[
+			INSERT INTO `card`
+				 VALUES(#{orderNo}, #{no}, #{cardBank}, #{dueDate}, #{password}, #{installment})
+		]]>		
+	</insert>
+	
+	<insert id="insertAccount"
+			parameterType="AccountVO">
+		<![CDATA[
+			INSERT INTO `account`
+				 VALUES(#{orderNo}, #{accountBank}, #{name})
+		]]>		
+	</insert>
+
+	<update id="updateState"
+			parameterType="map">
+		<![CDATA[
+			UPDATE `order`
+			   SET state=#{state}
+			 WHERE no=#{orderNo}
+		]]>		
+	</update>
+	
+	<delete id="deleteOrder"
+			parameterType="Integer">
+		<![CDATA[
+			DELETE FROM `order`
+			      WHERE no=#{orderNo}
+		]]>			
+	</delete>
+</mapper>

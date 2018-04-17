@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+	<select id="selectAll"
+		resultType="MemberVO" >
+		<![CDATA[
+			  SELECT id, name, tel, phone, email, classify		
+			    FROM member
+		    ORDER BY reg_date ASC;
+		]]>
+	</select>
+
+	<select id="selectByEmailAndPassword"
+		parameterType="MemberVO"
+		resultType="MemberVO">
+	    <![CDATA[
+		SELECT id, name, classify
+		  FROM member
+		 WHERE id=#{id}
+		   AND password=PASSWORD(#{password})
+		]]>
+	</select>
+
+	<select id="selectCountById"
+			parameterType="String"
+			resultType="int">
+	    <![CDATA[
+		SELECT COUNT(*)
+		  FROM member
+		 WHERE id=#{id}
+		]]>
+	</select>
+	
+	<select id="selectById"
+		parameterType="String"
+		resultType="MemberVO">
+	    <![CDATA[
+		SELECT id, name, birth, tel, phone, zipcode, address, email
+		  FROM member
+		 WHERE id=#{id}
+		]]>
+	</select>
+
+	<insert id="insert" parameterType="MemberVO">
+		<![CDATA[
+			INSERT INTO member
+		     	 VALUES (#{id},
+		     	 		 PASSWORD(#{password}),
+		     	 		 #{name},
+		     	 		 #{birth},
+		     	 		 #{tel},
+		     	 		 #{phone},
+		     	 		 #{zipcode},
+		     	 		 #{address},
+		     	 		 #{email},
+		     	 		 #{classify},
+		     	 		 DATE_FORMAT(NOW(), '%Y-%m-%d'))
+		]]>
+	</insert>
+	
+	<update id="update" parameterType="MemberVO">
+		<![CDATA[
+	 		UPDATE member
+			   SET name=#{name},
+				   birth=#{birth},
+				   tel=#{tel},
+				   phone=#{phone},
+				   zipcode=#{zipcode},
+				   address=#{address},
+				   email=#{email}
+	 	]]>
+		   	   <if test='password != ""'>
+		   	   <![CDATA[
+	 		       , password=PASSWORD(#{password}) ,
+ 		       ]]>
+		       </if>
+		<![CDATA[
+	 		 WHERE id=#{id}
+ 		]]>
+	</update>
+	
+	<update id="updateByMap"
+			parameterType="map">
+		<![CDATA[
+			UPDATE member
+			   SET classify=#{classify}
+			 WHERE id=#{id}
+		]]>
+	</update>
+</mapper>

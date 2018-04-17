@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cart">
+	<select id="selectAll"
+			parameterType="String"
+ 			resultType="map">
+ 		<![CDATA[
+ 			  SELECT *
+ 			    FROM `v_cart`
+ 			   WHERE u_id=#{id}
+ 		]]>
+ 	</select>
+	
+	<select id="select"
+			parameterType="CartVO"
+			resultType="Integer">
+		<![CDATA[
+ 			SELECT COUNT(*)
+ 			  FROM `cart`
+ 			 WHERE u_id=#{userId}
+ 			   AND p_code=#{productCode}
+ 		]]>
+	</select>
+	
+	<select id="selectSuboption"
+			parameterType="CartVO"
+			resultType="Integer">
+		<![CDATA[
+ 			SELECT COUNT(*)
+ 			  FROM `cart_suboption`
+ 			 WHERE u_id=#{userId}
+ 			   AND p_code=#{productCode}
+ 			   AND so_no=#{suboptionNo}
+ 		]]>
+	</select>
+	
+	<select id="selectCountOfSuboption"
+			parameterType="CartVO"
+			resultType="Integer">
+		<![CDATA[
+ 			SELECT COUNT(*)
+ 			  FROM `cart_suboption`
+ 			 WHERE u_id=#{userId}
+ 			   AND p_code=#{productCode}
+ 		]]>
+	</select>
+	
+	<insert id="insert"
+			parameterType="CartVO">
+		<![CDATA[
+			INSERT INTO `cart`
+			     VALUES(#{userId}, #{productCode},
+			     		DATE_FORMAT(NOW(), '%Y-%m-%d') )
+		]]>
+	</insert>
+	
+	<insert id="insertSuboption"
+			parameterType="CartVO">
+		<![CDATA[
+			INSERT INTO `cart_suboption`
+				 VALUES(#{userId}, #{productCode}, #{suboptionNo}, #{amount})
+		]]>
+	</insert>
+	
+	<update id="updateSuboptionWithInsert"
+			parameterType="CartVO">
+		<![CDATA[
+			UPDATE `cart_suboption`
+			   SET amount = amount + #{amount}
+			 WHERE u_id=#{userId}
+			   AND p_code=#{productCode}
+			   AND so_no=#{suboptionNo}
+		]]>		
+	</update>
+	
+	<update id="updateSuboption"
+			parameterType="CartVO">
+		<![CDATA[
+			UPDATE `cart_suboption`
+			   SET amount = #{amount}
+			 WHERE u_id=#{userId}
+			   AND p_code=#{productCode}
+			   AND so_no=#{suboptionNo}
+		]]>		
+	</update>
+	
+	<delete id="delete"
+			parameterType="CartVO">
+		<![CDATA[
+			DELETE FROM `cart`
+				  WHERE u_id=#{userId}
+				    AND p_code=#{productCode}
+		]]>
+	</delete>
+	<delete id="deleteSuboption"
+			parameterType="CartVO">
+		<![CDATA[
+			DELETE FROM `cart_suboption`
+				  WHERE u_id=#{userId}
+				    AND p_code=#{productCode}
+				    AND so_no=#{suboptionNo}
+		]]>
+	</delete>
+	
+	<delete id="deleteAll"
+			parameterType="String">
+		<![CDATA[
+			DELETE FROM `cart`
+				  WHERE u_id=#{Id}
+		]]>
+	</delete>
+	<delete id="deleteAllSuboption"
+			parameterType="String">
+		<![CDATA[
+			DELETE FROM `cart_suboption`
+				  WHERE u_id=#{Id}
+		]]>
+	</delete>
+</mapper>

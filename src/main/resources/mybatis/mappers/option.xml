@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="option">
+	<select id="selectAll"
+			resultType="OptionVO">
+		<![CDATA[
+			SELECT no, name
+			  FROM `option`
+		]]>
+	</select>
+	
+	<select id="selectByNo"
+			parameterType="Integer"
+			resultType="OptionVO">
+		<![CDATA[
+			SELECT no, name
+			  FROM `option`
+			 WHERE no=#{no}
+		]]>
+	</select>
+	
+	<update id="update"
+			parameterType="OptionVO">
+		<![CDATA[
+			UPDATE `option`
+			   SET name=#{name}
+			 WHERE no=#{no}
+		]]>
+	</update>
+	
+	<insert id="insert"
+			parameterType="String">
+		<![CDATA[
+			INSERT INTO `option`
+			     VALUES(null, #{name})
+		]]>
+	</insert>
+	
+	<delete id="delete"
+			parameterType="Integer">
+		<![CDATA[
+			DELETE FROM `option`
+			      WHERE no=#{no}
+		]]>	
+	</delete>
+	
+	<select id="selectAllSuboption"
+			parameterType="Integer"
+			resultType="SuboptionVO">
+		<![CDATA[
+			SELECT no, name, o_no
+			  FROM `suboption`
+			 WHERE o_no = #{optionNo}
+		]]>
+	</select>
+	
+	<select id="selectSuboption"
+			parameterType="Integer"
+			resultType="SuboptionVO">
+		<![CDATA[
+			SELECT no, name, o_no
+			  FROM `suboption`
+			 WHERE no = #{no}
+		]]>
+	</select>
+	
+	<update id="updateSuboption"
+			parameterType="SuboptionVO">
+		<![CDATA[
+			UPDATE `suboption`
+			   SET name=#{name}
+			 WHERE no=#{no}
+		]]>
+	</update>
+</mapper>

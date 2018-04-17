@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="product">
+	<select id="selectAll"
+			resultType="map">
+		<![CDATA[
+			  SELECT *
+			    FROM `v_product`
+		]]>
+	</select>
+	
+	<select id="selectAllByNew"
+			resultType="ProductVO">
+		<![CDATA[
+			  SELECT code, name, price, newItem, hitItem, saleItem, discount,
+			         image_path1 AS imagePath1
+			    FROM `product`
+			   WHERE state='sale'
+			     AND newItem=1
+			ORDER BY reg_date DESC
+		]]>
+	</select>
+	
+	<select id="selectAllByCategory"
+			parameterType="Integer"
+			resultType="ProductVO">
+		<![CDATA[
+			  SELECT code, name, price, newItem, hitItem, saleItem, discount,
+			         image_path1 AS imagePath1
+			    FROM `product`
+			   WHERE state='sale'
+			     AND c_no=#{categoryNo}
+			ORDER BY reg_date DESC
+		]]>
+	</select>
+	
+	<select id="selectAllSortedByCategory"
+			parameterType="map"
+			resultType="ProductVO">
+		<![CDATA[
+			  SELECT code, name, price, newItem, hitItem, saleItem, discount,
+			         image_path1 AS imagePath1
+			    FROM `product`
+			   WHERE state='sale'
+			   	 AND c_no=#{categoryNo}
+		]]>
+		<choose>
+			<when test='"expensive".equals(sortValue)'>
+			<![CDATA[
+				ORDER BY price DESC
+			]]>
+			</when>
+			<when test='"cheap".equals(sortValue)'>
+			<![CDATA[
+				ORDER BY price ASC
+			]]>
+			</when>
+			<when test='"name".equals(sortValue)'>
+			<![CDATA[
+				ORDER BY name ASC
+			]]>
+			</when>
+			<otherwise>
+			<![CDATA[
+				ORDER BY reg_date DESC
+			]]>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="selectByCode"
+			parameterType="String"
+			resultType="ProductVO">
+		<![CDATA[
+			SELECT code, name, maker, price,
+				   description, state, newItem, hitItem, saleItem, discount,
+				   image_path1 AS imagePath1, image_path2 AS imagePath2,
+				   image_path3 AS imagePath3,
+				   reg_date AS regDate, c_no AS categoryNo, o_no AS optionNo 
+			  FROM `product`, `product_option`
+			 WHERE code=p_code
+			   AND code=#{code}
+		]]>
+	</select>
+	
+	<update id="update"
+			parameterType="ProductVO">
+		<![CDATA[
+			UPDATE `product`
+			   SET name=#{name},
+			   	   maker=#{maker},
+			   	   price=#{price},
+			   	   description=#{description},
+			   	   state=#{state},
+			   	   newItem=#{newItem},
+			   	   hitItem=#{hitItem},
+			   	   saleItem=#{saleItem},
+			   	   discount=#{discount},
+			   	   c_no=#{categoryNo}
+		]]>
+		<choose>
+			<when test='"remove".equals(imagePath1)'>
+				<![CDATA[
+				   , image_path1=''
+				]]>
+			</when>
+			<when test="imagePath1 != ''">
+				<![CDATA[
+				   , image_path1=#{imagePath1}
+				]]>
+			</when>
+		</choose>
+		<choose>
+			<when test='"remove".equals(imagePath2)'>
+				<![CDATA[
+				   , image_path2=''
+				]]>
+			</when>
+			<when test="imagePath2 != ''">
+				<![CDATA[
+				   , image_path2=#{imagePath2}
+				]]>
+			</when>
+		</choose>
+		<choose>
+			<when test='"remove".equals(imagePath3)'>
+				<![CDATA[
+				   , image_path3=''
+				]]>
+			</when>
+			<when test="imagePath3 != ''">
+				<![CDATA[
+				   , image_path3=#{imagePath3}
+				]]>
+			</when>
+		</choose>
+		<![CDATA[
+			 WHERE code=#{code}
+		]]>
+	</update>
+	
+	<delete id="deleteOption"
+			parameterType="String">
+		<![CDATA[
+			DELETE FROM `product_option`
+			      WHERE p_code=#{code}
+		]]>
+	</delete>
+	
+	<insert id="insert"
+			parameterType="ProductVO">
+		<![CDATA[
+			INSERT INTO `product`
+			     VALUES(#{code},
+			     		#{name},
+			     		#{maker},
+			     		#{price},
+			     		#{description},
+			     		#{state},
+			     		#{newItem},
+			     		#{hitItem},
+			     		#{saleItem},
+			     		#{discount},
+			     		#{imagePath1},
+			     		#{imagePath2},
+			     		#{imagePath3},
+			     		DATE_FORMAT(NOW(), '%Y-%m-%d'),
+			     		#{categoryNo}
+			     		)
+		]]>
+	</insert>
+	
+	<insert id="insertOption"
+			parameterType="map">
+		<![CDATA[
+			INSERT INTO `product_option`
+			     VALUES(#{code}, #{optionNo})
+		]]>
+	</insert>
+	
+	<delete id="delete"
+			parameterType="String">
+		<![CDATA[
+			DELETE FROM `product`
+			      WHERE code=#{code}
+		]]>	
+	</delete>
+</mapper>
