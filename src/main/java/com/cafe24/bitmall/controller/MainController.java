@@ -29,10 +29,15 @@ public class MainController {
     public ModelAndView company() {
 	return new ModelAndView("main/company");
     }
-
-    @RequestMapping( "/test" )
-    public ModelAndView test() {
-	return new ModelAndView("temp/login");
+    
+    @RequestMapping( "/info" )
+    public ModelAndView info() {
+	return new ModelAndView("main/useinfo");
+    }
+    
+    @RequestMapping( "/policy" )
+    public ModelAndView policy() {
+	return new ModelAndView("main/policy");
     }
     
     @RequestMapping( value = "/zipcode", method = RequestMethod.GET )

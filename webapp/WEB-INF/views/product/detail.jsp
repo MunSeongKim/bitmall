@@ -11,7 +11,7 @@
 <!-------------------------------------------------------------------------------------------->	
 <!-- 시작 : 다른 웹페이지 삽입할 부분                                                       -->
 <!-------------------------------------------------------------------------------------------->
-		<table class="content-product-detail"><tr><td>	
+		<table class="content-lg content-center"><tr><td>	
 			<!-- form2 시작  -->
 			<form name="product-detail-form" method="post">
 			<input type="hidden" name="productCode" value="${product.code }">

@@ -26,7 +26,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="content-user-result-text">
+								<td class="content-text">
 									<p>저희 쇼핑몰을 가입하여 주셔서 대단히 감사합니다.</p>
 									<p>저희 쇼핑몰은 항상 최선을 다할 것을 약속 드립니다.</p>
 									<p>즐거운 쇼핑이 되시길 바랍니다.</p>

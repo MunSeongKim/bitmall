@@ -26,7 +26,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="content-user-result-text">
+								<td class="content-text">
 									<p>수정완료</p>
 								</td>
 							</tr>

@@ -2,41 +2,19 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-	<title>비트닷컴 쇼핑몰</title>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<link href="${pageContext.servletContext.contextPath }/assets/css/font.css" rel="stylesheet" type="text/css" />
-	<link href="${pageContext.servletContext.contextPath }/assets/css/main.css" rel="stylesheet" type="text/css" />
-	<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.9.0.js"></script>
-</head>
-<body>
 <jsp:include page="/WEB-INF/views/include/head.jsp"/>
-<jsp:include page="/WEB-INF/views/include/search.jsp"/>
+<jsp:include page="/WEB-INF/views/include/navigation.jsp"/>
 <!-- Main content -->
 <table id="content">
 	<tr>
-		<td id="nav">
-			<jsp:include page="/WEB-INF/views/include/navigation.jsp"/>
-		</td>
 		<td id="content-main">
-		<!---- 화면 우측 제목 -------------------------------------------------->
-			<table id="content-main-title">
-				<tr>
-					<td>
-						<img src="${pageContext.servletContext.contextPath }/assets/images/jumun_title.gif" width="746" height="30" border="0">
-					</td>
-				</tr>
-			</table>
-
 <!-------------------------------------------------------------------------------------------->	
 <!-- 시작 : 다른 웹페이지 삽입할 부분                                                       -->
-<!-------------------------------------------------------------------------------------------->	
+<!-------------------------------------------------------------------------------------------->
+		<table class="content-sm content-center"><tr><td>	
 			<table border="0" cellpadding="0" cellspacing="0" width="690">
 				<tr>
-					<td><img src="${pageContext.servletContext.contextPath }/assets/images/jumun_title2.gif" border="0" align="absmiddle"></td>
+					<td align="left"><img src="${pageContext.servletContext.contextPath }/assets/images/jumun_title2.gif" border="0" align="absmiddle"></td>
 				</tr>
 				<tr><td height="5"></td></tr>
 			</table>
@@ -53,7 +31,7 @@
 				<tr><td colspan="6" bgcolor="DEDCDD"></td></tr>
 				<c:forEach items="${orderProducts }" var="orderProduct" >
 					<tr>
-						<td width="60">
+						<td width="60" align="left">
 							<a href="${pageContext.servletContext.contextPath }/product/${orderProduct.productCode}"><img src="${pageContext.servletContext.contextPath }${orderProduct.imagePath}" width="50" height="50" border="0"></a>
 						</td>
 						<td height="52">
@@ -73,7 +51,7 @@
 
 			<table border="0" cellpadding="0" cellspacing="0" width="690">
 				<tr>
-					<td><img src="${pageContext.servletContext.contextPath }/assets/images/jumun_title3.gif" border="0" align="absmiddle"></td>
+					<td align="left"><img src="${pageContext.servletContext.contextPath }/assets/images/jumun_title3.gif" border="0" align="absmiddle"></td>
 				</tr>
 				<tr><td height="5"></td></tr>
 			</table>
@@ -115,7 +93,7 @@
 
 			<table border="0" cellpadding="0" cellspacing="0" width="690">
 				<tr>
-					<td><img src="${pageContext.servletContext.contextPath }/assets/images/jumun_title4.gif" border="0" align="absmiddle"></td>
+					<td align="left"><img src="${pageContext.servletContext.contextPath }/assets/images/jumun_title4.gif" border="0" align="absmiddle"></td>
 				</tr>
 				<tr><td height="5"></td></tr>
 			</table>
@@ -169,15 +147,13 @@
 					</td>
 				</tr>
 			</table>
-
-
+			</td></tr></table>
 <!-------------------------------------------------------------------------------------------->	
 <!-- 끝 : 다른 웹페이지 삽입할 부분                                                         -->
 <!-------------------------------------------------------------------------------------------->	
 		</td>
 	</tr>
 </table>
-<br><br>
 <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
 </body>
 </html>

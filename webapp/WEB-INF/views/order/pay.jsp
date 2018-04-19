@@ -11,7 +11,7 @@
 <!-------------------------------------------------------------------------------------------->	
 <!-- 시작 : 다른 웹페이지 삽입할 부분                                                       -->
 <!-------------------------------------------------------------------------------------------->	
-			<table class="content-cart"><tr><td>
+			<table class="content-md content-center"><tr><td>
 			<table border="0" cellpadding="0" cellspacing="0" width="710">
 				<tr>
 					<td align="left"><img src="${pageContext.servletContext.contextPath }/assets/images/order_title1.gif" width="65" height="15" border="0"></td>

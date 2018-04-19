@@ -1,0 +1,112 @@
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	background-color: #333;
+	height: 100%;
+}
+
+img {
+	border: 0;
+}
+
+div.bg {
+	position: relative;
+	vertical-align : middle;
+	margin: 0 auto;
+	width: 900px;
+	overflow:hidden;
+	height:auto;
+	min-height: 100%;
+	background-color: #fff;
+	border-left: 2px solid #FFD200;
+	border-right: 2px solid #FFD200;
+	clear:both;
+}
+
+.center {
+	margin: 0 auto;
+}
+
+.login-center {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+table.login {
+	border: 3px solid #333;
+}
+
+table.login table tr td {
+	vertical-align: middle;
+	padding-top: 10px;
+}
+
+table.login table tr:nth-child(2) td{
+	padding-top: 20px;
+}
+
+table.login table tr:last-child td{
+	padding-bottom: 10px;
+}
+
+table.login table tr td input,
+table.login table tr td img  {
+	vertical-align:bottom;
+}
+
+
+table.admin {
+	width: 800px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+table.admin img {
+	border: 1px solid #333;
+}
+
+.admin-actions {
+	text-align: right;
+}
+
+td.admin-title {
+	padding: 1em 0;
+	vertical-align: bottom;
+	width: 150px;
+	text-align: left;
+}
+
+.lg {
+	width: 800px;
+	margin: 0 auto;
+	padding: 2em 0;
+}
+
+.md {
+	width: 600px;
+	margin: 0 auto;
+	padding: 2em 0;
+}
+
+.sm {
+	width: 450px;
+	margin: 0 auto;
+	padding: 2em 0;
+	
+}

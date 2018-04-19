@@ -12,7 +12,7 @@
 		<!-- 시작 : 다른 웹페이지 삽입할 부분                                                                                                                                                            -->
 		<!-------------------------------------------------------------------------------------------->	
 			<!---- 화면 우측(로그인) S -------------------------------------------------->
-			<table class="content-login-form">
+			<table class="content-center">
 				<tr>
 					<td width="120" align="center"><img src="${pageContext.servletContext.contextPath }/assets/images/login_image1.gif" width="110" height="90" border="0"></td>
 					<td width="320">
@@ -59,7 +59,7 @@
 				</tr>
 			</table>
 			<hr />
-			<table class="content-login-form">
+			<table class="content-center">
 				<tr>
 					<td align="center">
 						<table border="0" cellpadding="0" cellspacing="0">

@@ -7,11 +7,14 @@
 	<title>쇼핑몰 관리자 홈페이지</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<link href="${pageContext.servletContext.contextPath }/assets/css/font.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.servletContext.contextPath }/assets/css/admin.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.9.0.js"></script>
 </head>
-<body bgcolor="white" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-<br>
+<body>
+<div class="bg">
 <jsp:include page="/WEB-INF/views/include/admin-menu.jsp"/>
-<hr width='900' size='3'>
+
+<div class="center lg">
 <table width="800" border="1" cellspacing="0" cellpadding="4" bordercolordark="white" bordercolorlight="black">
 	<tr> 
         <td width="100" height="20" bgcolor="#CCCCCC" align="center"><font color="#142712">주문번호</font></td>
@@ -143,6 +146,6 @@
 		</td>
 	</tr>
 </table>
-<br>
+</div></div>
 </body>
 </html>

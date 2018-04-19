@@ -7,16 +7,13 @@
 	<title>쇼핑몰 관리자 홈페이지</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<link href="${pageContext.servletContext.contextPath }/assets/css/font.css" rel="stylesheet" type="text/css">
-	<script src="${ pageContext.servletContext.contextPath }/assets/js/jquery/jquery-1.9.0.js" type="text/javascript"></script>
-	
+	<link href="${pageContext.servletContext.contextPath }/assets/css/admin.css" rel="stylesheet" type="text/css">
 </head>
-<body bgcolor="white" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-<br>
+<body>
+<div class="bg">
 <jsp:include page="/WEB-INF/views/include/admin-menu.jsp"/>
-<hr width='900' size='3'>
 
-<body bgcolor="white" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-
+<div class="center lg">
 <form name="modify-product-form" method="post" action="${pageContext.servletContext.contextPath }/admin/product/modify"
 	  enctype="multipart/form-data">
 <table width="800" border="1" cellspacing="0" cellpadding="3" bordercolordark="white" bordercolorlight="black">
@@ -199,8 +196,6 @@
 		</td>
 	</tr>
 </table>
-
-<br>
 <table width="800" border="0" cellspacing="0" cellpadding="5">
 	<tr> 
 		<td align="center">
@@ -210,6 +205,11 @@
 	</tr>
 </table>
 </form>
+</div>
+</div>
+
+
+
 <script type="text/javascript">
 	function imageView(obj){
 		document.getElementById('big-img').src = obj.src;

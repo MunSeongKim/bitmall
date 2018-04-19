@@ -11,7 +11,7 @@
 <!-------------------------------------------------------------------------------------------->	
 <!-- 시작 : 다른 웹페이지 삽입할 부분                                                       -->
 <!-------------------------------------------------------------------------------------------->
-		<table class="content-result"><tr><td>
+		<table class="content-sm content-center"><tr><td>
 			<table border="0" cellpadding="0" cellspacing="0" width="685" class="cmfont">
 				<tr>
 					<td align="left"><img src="${pageContext.servletContext.contextPath }/assets/images/order_title1.gif" border="0"></td>

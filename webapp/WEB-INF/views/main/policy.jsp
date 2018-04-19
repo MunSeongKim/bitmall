@@ -2,38 +2,19 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<html>
-<head>
-	<title>비트닷컴 쇼핑몰</title>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8">
-	<link href="${pageContext.servletContext.contextPath }/assets/css/font.css" rel="stylesheet" type="text/css">
-</head>
-<body style="margin:0">
 <jsp:include page="/WEB-INF/views/include/head.jsp"/>
-<jsp:include page="/WEB-INF/views/include/search.jsp"/>
-<table width="959" border="0" cellspacing="0" cellpadding="0" align="center">
-	<tr><td height="10" colspan="2"></td></tr>
+<jsp:include page="/WEB-INF/views/include/navigation.jsp"/>
+<!-- Main content -->
+<table id="content">
 	<tr>
-		<td height="100%" valign="top">
-			<jsp:include page="/WEB-INF/views/include/navigation.jsp"/>
-		</td>
-		<td width="10"></td>
-		<td valign="top">
-
+		<td id="content-main">
 <!-------------------------------------------------------------------------------------------->	
 <!-- 시작 : 다른 웹페이지 삽입할 부분                                                       -->
 <!-------------------------------------------------------------------------------------------->	
-
-			<table border="0" cellpadding="0" cellspacing="0" width="747">
-				<tr><td height="13"></td></tr>
-				<tr>
-					<td height="30"><img src="${pageContext.servletContext.contextPath }/assets/images/help_title.gif" width="746" height="30" border="0"></td>
-				</tr>
-				<tr><td height="13"></td></tr>
-			</table>
+			<table class="content-sm content-center" style="text-align: left"><tr><td>
 			<table border="0" cellpadding="0" cellspacing="0" width="690">
 				<tr>
-					<td><img src="${pageContext.servletContext.contextPath }/assets/images/policy_title1.gif" border="0"></td>
+					<td align="left"><img src="${pageContext.servletContext.contextPath }/assets/images/policy_title1.gif" border="0"></td>
 				</tr>
 				<tr><td height="10"></td></tr>
 			</table>
@@ -77,7 +58,7 @@
 			    </tr>
 			    <tr><td width="700" height="20" colspan="2"></td></tr>
 			</table>
-
+		</td></tr></table>
 <!-------------------------------------------------------------------------------------------->	
 <!-- 끝 : 다른 웹페이지 삽입할 부분                                                         -->
 <!-------------------------------------------------------------------------------------------->	

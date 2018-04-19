@@ -36,8 +36,8 @@ table#header-top table, table#footer table, table#content table {
 	border-collapse: collapse;
 }
 
-table#header-top table#header-top-logo, table#header-top table#header-top-logo img
-	{
+table#header-top table#header-top-logo,
+table#header-top table#header-top-logo img {
 	width: 182px;
 }
 
@@ -104,23 +104,51 @@ table#search td:nth-child(5) input {
 }
 
 table#footer {
-	background-color: #FFF;
+	padding: 1em;
 }
 
-table#footer tr.vertical-line {
+table#footer-inner {
+	width:100%;
+}
+
+hr.vertical-line {
 	content: "&nbsp;";
 	height: 16px;
 	background-image: linear-gradient(to bottom, #EFEFEF, #FFFFFF);
+	border: 0;
+	margin-bottom: 10px;
+	
 }
 
 table#footer td#footer-logo {
 	vertical-align: top;
-	padding-right: 10px;
+	padding: 0 1em 1em 1em;
+	width: 72px;
+}
+
+table#footer td#footer-logo img {
+	width:72px;
+}
+
+table#footer td#footer-content {
+	width: 100%;
+}
+
+table#footer td#footer-content table {
+	margin: 0 auto;	
+}
+
+table#footer td#footer-content td#copyright {
+	color: #666;
+	padding-top: 1em;
 }
 
 table#footer td#actions {
+	padding-top: 1em;
+	padding-right: 1em;
 	vertical-align: top;
 	text-align: right;
+	float: right;
 }
 
 table#footer td#actions td:last-child {
@@ -189,14 +217,19 @@ table.content-items-table td.content-items-img {
 
 table.content-items-table td.content-items-img img {
 	width: 180px;
+	height: 125px;
 	border: 1px solid #333;
 }
 
-table.content-items-table td.content-items-title, table.content-items-table td.content-items-price
-	{
+table.content-items-table td.content-items-title,
+table.content-items-table td.content-items-price {
 	height: 20px;
 	text-align: center;
 	color: #444444 !important;
+}
+
+table.content-items-table td.content-items-title a {
+	display:block;
 }
 
 table.content-items-table td.content-items-title img {
@@ -327,38 +360,34 @@ table#content-user-item td.content-user-result-title {
 	font-weight: bold;
 }
 
-table#content-user-item td.content-user-result-text {
+td.content-text {
+	border: 5px solid #ccc;
 	height: 30px;
+	padding: 1em;
 }
 
-table#content-user-item td.content-user-result-text p {
+td.content-text p {
+	text-align: left;
+	line-height: 1em;
 	padding: 10px 0;
 }
 
-table.content-login-form {
-	margin: 1em auto;
+table.content-center {
+	margin: 3em auto;
 }
 
-table.content-cart {
+table.content-md {
 	width: 710px;
-	margin: 1em auto;	
 }
 
-table.content-cart.heading {
+table.content-md.heading {
 	padding: 10px;
 }
 
-table.content-order-list {
+table.content-sm {
 	width: 690px;
-	margin: 1em auto;
 }
 
-table.content-product-detail {
-	width: 745px;
-	margin: 1em auto;
-}
-
-table.content-result {
-	width: 685px;
-	margin: 1em auto;
+table.content-lg {
+	width: 747px;
 }

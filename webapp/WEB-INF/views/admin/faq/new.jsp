@@ -7,11 +7,14 @@
 	<title>쇼핑몰 관리자 홈페이지</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<link href="${pageContext.servletContext.contextPath }/assets/css/font.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.servletContext.contextPath }/assets/css/admin.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.9.0.js"></script>
 </head>
-<body bgcolor="white" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-<br>
+<body>
+<div class="bg">
 <jsp:include page="/WEB-INF/views/include/admin-menu.jsp"/>
-<hr width='900' size='3'>
+
+<div class="center md">
 <form name="faq-new-form" method="post" action="${pageContext.servletContext.contextPath }/admin/faq/new">
 <table width="600" border="1" cellspacing="0" bordercolordark="white" bordercolorlight="black">
 	<tr> 
@@ -36,10 +39,11 @@
 	<tr> 
 		<td align="center">
 			<input type="submit" value="등 록 하 기" />
-			<a href="faq.jsp"><input type="button" value="이 전 화 면"></a>
+			<a href="${pageContext.servletContext.contextPath }/admin/faq"><input type="button" value="이 전 화 면"></a>
 		</td>
 	</tr>
 </table>
 </form>
+</div></div>
 </body>
 </html>

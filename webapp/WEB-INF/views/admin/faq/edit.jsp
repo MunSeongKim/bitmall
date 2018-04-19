@@ -7,11 +7,14 @@
 	<title>쇼핑몰 관리자 홈페이지</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<link href="${pageContext.servletContext.contextPath }/assets/css/font.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.servletContext.contextPath }/assets/css/admin.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.9.0.js"></script>
 </head>
-<body bgcolor="white" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-<br>
+<body>
+<div class="bg">
 <jsp:include page="/WEB-INF/views/include/admin-menu.jsp"/>
-<hr width='900' size='3'>
+
+<div class="center md">
 
 <form name="form1" method="post" action="${pageContext.servletContext.contextPath }/admin/faq/edit">
 	<input type="hidden" name="no" value="${faq.no }" />
@@ -44,5 +47,6 @@
 </table>
 
 </form>
+</div></div>
 </body>
 </html>

@@ -23,10 +23,10 @@
 			<c:set var="count" value="${fn:length(newProducts)}" />
 			<table id="content-main-item">
 				<!---1번째 줄-->
-				<c:forEach var="row" begin="0" end="${count / 4 }">
+				<c:forEach var="row" begin="0" end="${count / 3 }">
 				<tr>
-					<c:forEach var="col" begin="0" end="4">
-						<c:set var="itemIdx" value="${(row*5)+col }"/>
+					<c:forEach var="col" begin="0" end="3">
+						<c:set var="itemIdx" value="${(row*4)+col }"/>
 						<c:if test="${itemIdx lt count }">
 						<td class="content-items">
 							<table class="content-items-table cmfont">
